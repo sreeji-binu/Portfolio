@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sreeji Binu — Data Analyst & AI Governance Specialist</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --teal: #1a5c52;
+    --teal-light: #2a7a6e;
+    --blue: #4a7fa5;
+    --blue-light: #6a9fbd;
+    --orange: #e07b39;
+    --orange-light: #f0a060;
+    --cream: #f4f0e8;
+    --cream-dark: #e8e2d4;
+    --white: #fdfcfa;
+    --text-dark: #1c2b28;
+    --text-mid: #3d5450;
+    --text-light: #7a9490;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 3rem;
+    background: rgba(253,252,250,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(26,92,82,0.1);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: var(--teal);
+    font-weight: 700;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-mid);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--orange); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: var(--blue);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding-top: 4rem;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -80px; right: -80px;
+    width: 400px; height: 400px;
+    background: var(--orange);
+    border-radius: 50%;
+    opacity: 0.18;
+  }
+  .hero::after {
+    content: '';
+    position: absolute; bottom: -60px; left: 30%;
+    width: 280px; height: 280px;
+    background: var(--teal);
+    border-radius: 50%;
+    opacity: 0.25;
+  }
+  .hero-left {
+    padding: 5rem 3rem 5rem 5rem;
+    z-index: 2;
+    animation: fadeUp 0.9s ease both;
+  }
+  .hero-tag {
+    display: inline-block;
+    background: var(--orange);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.9rem;
+    border-radius: 2px;
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 5vw, 5rem);
+    line-height: 1.05;
+    color: var(--white);
+    font-weight: 900;
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 span { color: var(--orange-light); }
+  .hero-sub {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.7;
+    max-width: 420px;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+  }
+  .hero-badges {
+    display: flex; flex-wrap: wrap; gap: 0.6rem;
+    margin-bottom: 2.5rem;
+  }
+  .badge {
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    font-size: 0.78rem;
+    padding: 0.4rem 0.9rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.25);
+    font-weight: 400;
+  }
+  .hero-cta {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+  }
+  .btn {
+    padding: 0.85rem 2rem;
+    border-radius: 3px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.2s, box-shadow 0.2s;
+    letter-spacing: 0.03em;
+  }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+  .btn-primary { background: var(--orange); color: #fff; }
+  .btn-outline { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.6); }
+  .hero-right {
+    display: flex; align-items: center; justify-content: center;
+    padding: 4rem 3rem;
+    z-index: 2;
+    animation: fadeUp 0.9s 0.2s ease both;
+  }
+  .hero-card {
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 16px;
+    padding: 2.5rem;
+    max-width: 340px;
+    width: 100%;
+  }
+  .hero-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: #fff;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding-bottom: 0.8rem;
+  }
+  .stat-row {
+    display: flex; justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+  .stat { text-align: center; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--orange-light);
+    display: block;
+  }
+  .stat-label {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.7);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .contact-line {
+    display: flex; align-items: center; gap: 0.6rem;
+    color: rgba(255,255,255,0.8);
+    font-size: 0.82rem;
+    margin-top: 0.5rem;
+  }
+  .contact-line svg { flex-shrink: 0; }
+
+  /* ABOUT */
+  .about {
+    background: var(--cream);
+    padding: 7rem 5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+  .about-visual {
+    position: relative;
+    animation: fadeUp 0.8s ease both;
+  }
+  .about-shape {
+    width: 280px; height: 280px;
+    background: var(--teal);
+    border-radius: 40% 60% 55% 45% / 45% 40% 60% 55%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto;
+  }
+  .about-shape-inner {
+    width: 220px; height: 220px;
+    background: var(--blue-light);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    color: #fff;
+  }
+  .about-deco {
+    position: absolute; top: -20px; right: 20px;
+    width: 80px; height: 80px;
+    background: var(--orange);
+    border-radius: 50%;
+    opacity: 0.7;
+  }
+  .section-eyebrow {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 700;
+    color: var(--teal);
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+  }
+  .section-body {
+    font-size: 1rem;
+    color: var(--text-mid);
+    line-height: 1.8;
+    font-weight: 300;
+  }
+  .about-tools {
+    display: flex; flex-wrap: wrap; gap: 0.6rem;
+    margin-top: 2rem;
+  }
+  .tool-chip {
+    background: var(--teal);
+    color: #fff;
+    font-size: 0.78rem;
+    padding: 0.4rem 0.9rem;
+    border-radius: 3px;
+    font-weight: 500;
+  }
+
+  /* EDUCATION & SKILLS */
+  .edu-skills {
+    background: var(--teal);
+    padding: 7rem 5rem;
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .edu-skills-left .section-title { color: var(--orange-light); }
+  .edu-skills-left .section-body { color: rgba(255,255,255,0.75); }
+  .edu-skills-right { display: grid; gap: 2.5rem; }
+  .edu-block h3 {
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--orange-light);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+  }
+  .edu-item {
+    display: flex; align-items: flex-start; gap: 0.8rem;
+    margin-bottom: 0.9rem;
+  }
+  .edu-dot {
+    width: 8px; height: 8px;
+    background: var(--orange);
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 0.45rem;
+  }
+  .edu-item-text { color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.5; }
+  .edu-item-sub { color: rgba(255,255,255,0.5); font-size: 0.82rem; }
+  .skills-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .skill-tag {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.9);
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 3px;
+  }
+
+  /* EXPERIENCE */
+  .experience {
+    background: var(--white);
+    padding: 7rem 5rem;
+  }
+  .experience-header { text-align: center; margin-bottom: 4rem; }
+  .experience-header .section-title { color: var(--teal); }
+  .timeline {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute; left: 50%; top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--orange), var(--blue));
+    transform: translateX(-50%);
+  }
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+    position: relative;
+  }
+  .timeline-item:nth-child(odd) .timeline-content { grid-column: 1; }
+  .timeline-item:nth-child(odd) .timeline-empty { grid-column: 2; }
+  .timeline-item:nth-child(even) .timeline-content { grid-column: 2; grid-row: 1; }
+  .timeline-item:nth-child(even) .timeline-empty { grid-column: 1; grid-row: 1; }
+  .timeline-dot {
+    position: absolute; left: 50%; top: 1.2rem;
+    width: 14px; height: 14px;
+    background: var(--orange);
+    border: 3px solid var(--white);
+    border-radius: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    box-shadow: 0 0 0 3px var(--orange-light);
+  }
+  .timeline-content {
+    background: var(--cream);
+    border-radius: 8px;
+    padding: 1.8rem;
+    border-left: 4px solid var(--orange);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .timeline-content:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(26,92,82,0.1); }
+  .timeline-date {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--orange);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+  }
+  .timeline-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    color: var(--teal);
+    margin-bottom: 0.3rem;
+    font-weight: 700;
+  }
+  .timeline-tools {
+    font-size: 0.78rem;
+    color: var(--blue);
+    font-weight: 500;
+    margin-bottom: 0.8rem;
+  }
+  .timeline-text { font-size: 0.88rem; color: var(--text-mid); line-height: 1.7; }
+
+  /* PROJECTS */
+  .projects {
+    background: var(--blue);
+    padding: 7rem 5rem;
+  }
+  .projects-header { text-align: center; margin-bottom: 4rem; }
+  .projects-header .section-title { color: #fff; }
+  .projects-header .section-eyebrow { color: var(--orange-light); }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .project-card {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 12px;
+    padding: 2rem;
+    backdrop-filter: blur(8px);
+    transition: transform 0.2s, background 0.2s;
+    cursor: default;
+  }
+  .project-card:hover {
+    transform: translateY(-6px);
+    background: rgba(255,255,255,0.17);
+  }
+  .project-icon {
+    width: 48px; height: 48px;
+    background: var(--orange);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.2rem;
+    font-size: 1.4rem;
+  }
+  .project-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: #fff;
+    margin-bottom: 0.4rem;
+  }
+  .project-tag {
+    font-size: 0.75rem;
+    color: var(--orange-light);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.8rem;
+  }
+  .project-desc { font-size: 0.88rem; color: rgba(255,255,255,0.75); line-height: 1.65; }
+
+  /* CERTIFICATIONS */
+  .certs {
+    background: var(--cream);
+    padding: 7rem 5rem;
+  }
+  .certs-header { text-align: center; margin-bottom: 4rem; }
+  .certs-header .section-title { color: var(--teal); }
+  .certs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .cert-card {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(26,92,82,0.07);
+    border-top: 4px solid var(--teal);
+    transition: transform 0.2s;
+  }
+  .cert-card:nth-child(2) { border-top-color: var(--orange); }
+  .cert-card:nth-child(3) { border-top-color: var(--blue); }
+  .cert-card:hover { transform: translateY(-4px); }
+  .cert-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    color: var(--teal);
+    margin-bottom: 1rem;
+  }
+  .cert-list { list-style: none; }
+  .cert-list li {
+    font-size: 0.84rem;
+    color: var(--text-mid);
+    padding: 0.35rem 0;
+    border-bottom: 1px solid var(--cream-dark);
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .cert-list li::before { content: '✓'; color: var(--orange); font-weight: 700; font-size: 0.8rem; }
+
+  /* CONTACT */
+  .contact {
+    background: var(--teal);
+    padding: 7rem 5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+  .contact-left .section-title { color: var(--orange-light); }
+  .contact-left .section-body { color: rgba(255,255,255,0.75); margin-bottom: 2.5rem; }
+  .contact-items { display: grid; gap: 1.2rem; }
+  .contact-item {
+    display: flex; align-items: center; gap: 1rem;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+    text-decoration: none;
+    color: #fff;
+    transition: background 0.2s;
+  }
+  .contact-item:hover { background: rgba(255,255,255,0.15); }
+  .contact-icon {
+    width: 40px; height: 40px;
+    background: var(--orange);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-size: 1rem;
+  }
+  .contact-item-label { font-size: 0.72rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.1em; }
+  .contact-item-value { font-size: 0.92rem; color: #fff; font-weight: 500; }
+  .contact-right {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 16px;
+    padding: 3rem;
+  }
+  .contact-right h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 1rem;
+  }
+  .contact-right p { color: rgba(255,255,255,0.7); font-size: 0.95rem; line-height: 1.7; margin-bottom: 2rem; }
+  .avail-badges { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+  .avail-badge {
+    background: rgba(224,123,57,0.3);
+    border: 1px solid var(--orange);
+    color: var(--orange-light);
+    font-size: 0.8rem;
+    padding: 0.4rem 0.9rem;
+    border-radius: 999px;
+    font-weight: 500;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--text-dark);
+    text-align: center;
+    padding: 2rem;
+    color: rgba(255,255,255,0.4);
+    font-size: 0.82rem;
+  }
+  footer span { color: var(--orange); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-left { padding: 6rem 2rem 3rem; }
+    .hero-right { padding: 2rem; }
+    .about, .edu-skills, .contact { grid-template-columns: 1fr; padding: 4rem 2rem; gap: 3rem; }
+    .experience, .projects, .certs { padding: 4rem 2rem; }
+    .projects-grid, .certs-grid { grid-template-columns: 1fr; }
+    .timeline::before { left: 0; }
+    .timeline-item { grid-template-columns: 1fr; margin-left: 1.5rem; }
+    .timeline-item:nth-child(even) .timeline-content { grid-column: 1; }
+    .timeline-dot { left: -1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Sreeji Binu</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <span class="hero-tag">Data Analyst · AI Governance</span>
+    <h1>Sreeji<br/><span>Binu</span></h1>
+    <p class="hero-sub">Transforming complex datasets into ROI-focused insights across e-commerce, retail, and aviation. NIST RMF certified with a focus on AI Auditing and data-driven decision-making.</p>
+    <div class="hero-badges">
+      <span class="badge">Power BI</span>
+      <span class="badge">Tableau</span>
+      <span class="badge">SQL</span>
+      <span class="badge">NIST RMF</span>
+      <span class="badge">AI Governance</span>
+    </div>
+    <div class="hero-cta">
+      <a href="#projects" class="btn btn-primary">View My Work</a>
+      <a href="#contact" class="btn btn-outline">Get In Touch</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-card">
+      <h3>At a Glance</h3>
+      <div class="stat-row">
+        <div class="stat">
+          <span class="stat-num">5+</span>
+          <span class="stat-label">Projects</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">15+</span>
+          <span class="stat-label">Certifications</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">M.Com</span>
+          <span class="stat-label">Education</span>
+        </div>
+      </div>
+      <div style="border-top:1px solid rgba(255,255,255,0.2);padding-top:1.2rem;margin-top:0.8rem;">
+        <div class="contact-line">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6b18190e0e01020902051e5a52525e2b0c060a020745080406">[email&#160;protected]</a>
+        </div>
+        <div class="contact-line" style="margin-top:0.5rem;">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Based in Muscat · Indian National · Remote Worldwide
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-visual">
+    <div class="about-deco"></div>
+    <div class="about-shape">
+      <div class="about-shape-inner">SB</div>
+    </div>
+  </div>
+  <div>
+    <p class="section-eyebrow">About Me</p>
+    <h2 class="section-title">Data-Driven.<br/>Governance-Ready.</h2>
+    <p class="section-body">Results-driven Data Analyst with an M.Com foundation and certified expertise in SQL, Power BI, Tableau, and AI Governance. I have a proven ability to transform complex datasets into actionable, ROI-focused insights across e-commerce, retail, and aviation domains.</p>
+    <p class="section-body" style="margin-top:1rem;">NIST RMF certified with a career focus on AI Auditing and data-driven decision-making for international markets. I thrive on independent delivery, clear stakeholder communication, and meticulous attention to detail.</p>
+    <div class="about-tools">
+      <span class="tool-chip">Power BI</span>
+      <span class="tool-chip">Tableau</span>
+      <span class="tool-chip">Excel</span>
+      <span class="tool-chip">SQL</span>
+      <span class="tool-chip">DAX</span>
+      <span class="tool-chip">Power Query</span>
+      <span class="tool-chip">AI Governance</span>
+      <span class="tool-chip">NIST RMF</span>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION & SKILLS -->
+<section class="edu-skills" id="education">
+  <div class="edu-skills-left">
+    <p class="section-eyebrow" style="color:var(--orange-light)">Background</p>
+    <h2 class="section-title">Education<br/>& Skills</h2>
+    <p class="section-body">A strong academic foundation in Commerce, paired with industry-recognised certifications in data analytics, AI governance, and cybersecurity — built for international markets.</p>
+  </div>
+  <div class="edu-skills-right">
+    <div class="edu-block">
+      <h3>Education</h3>
+      <div class="edu-item">
+        <div class="edu-dot"></div>
+        <div>
+          <div class="edu-item-text">Master of Commerce (M.Com)</div>
+          <div class="edu-item-sub">Bharathiar University, India</div>
+        </div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-dot"></div>
+        <div>
+          <div class="edu-item-text">Bachelor of Commerce (B.Com)</div>
+          <div class="edu-item-sub">Kerala University, India</div>
+        </div>
+      </div>
+    </div>
+    <div class="edu-block">
+      <h3>Technical Skills</h3>
+      <div class="skills-grid">
+        <span class="skill-tag">Power BI</span>
+        <span class="skill-tag">Tableau</span>
+        <span class="skill-tag">Excel</span>
+        <span class="skill-tag">Power Query</span>
+        <span class="skill-tag">SQL</span>
+        <span class="skill-tag">DAX</span>
+        <span class="skill-tag">KPI Dashboards</span>
+        <span class="skill-tag">Data Cleaning</span>
+        <span class="skill-tag">Statistical Analysis</span>
+        <span class="skill-tag">Data Visualisation</span>
+        <span class="skill-tag">AI Governance</span>
+        <span class="skill-tag">NIST RMF</span>
+      </div>
+    </div>
+    <div class="edu-block">
+      <h3>Soft Skills</h3>
+      <div class="skills-grid">
+        <span class="skill-tag">Analytical Thinking</span>
+        <span class="skill-tag">Stakeholder Communication</span>
+        <span class="skill-tag">Independent Delivery</span>
+        <span class="skill-tag">Attention to Detail</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="experience" id="experience">
+  <div class="experience-header">
+    <p class="section-eyebrow">Work Experience</p>
+    <h2 class="section-title" style="color:var(--teal)">Projects & Analytics Work</h2>
+  </div>
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="timeline-date">Mar 2026</div>
+        <div class="timeline-title">E-Commerce Analytics</div>
+        <div class="timeline-tools">Excel · Power BI</div>
+        <p class="timeline-text">Analysed sales data, conversion rates, and customer segments to identify a 15–20% revenue growth opportunity. Built an interactive Power BI dashboard tracking conversion funnels, cart abandonment, and seasonal demand — enabling data-backed pricing and inventory decisions.</p>
+      </div>
+      <div class="timeline-empty"></div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-empty"></div>
+      <div class="timeline-content">
+        <div class="timeline-date">2024</div>
+        <div class="timeline-title">Retail Sales Dashboard</div>
+        <div class="timeline-tools">Power BI</div>
+        <p class="timeline-text">Improved reporting efficiency by 40% by replacing manual spreadsheet workflows with automated Power BI dashboards. Identified top-performing product lines and seasonal demand cycles, enabling accurate inventory planning across categories.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="timeline-date">2024</div>
+        <div class="timeline-title">StellarMart Retail Analysis</div>
+        <div class="timeline-tools">Excel · Power BI</div>
+        <p class="timeline-text">Analysed retail sales data to identify margin gaps and underperforming categories. Cleaned and restructured multi-source datasets, reducing data inconsistencies and improving reporting accuracy for downstream stakeholder analysis.</p>
+      </div>
+      <div class="timeline-empty"></div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-empty"></div>
+      <div class="timeline-content">
+        <div class="timeline-date">2024</div>
+        <div class="timeline-title">AeroMax Airways — Operational Analytics</div>
+        <div class="timeline-tools">Excel</div>
+        <p class="timeline-text">Identified operational inefficiencies in airline datasets — including delay patterns and booking revenue gaps — delivering data-driven recommendations to improve scheduling efficiency and revenue recovery.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="timeline-date">2025–2026</div>
+        <div class="timeline-title">Health Data Research — Diagnostic Analytics</div>
+        <div class="timeline-tools">Excel · Research Analysis</div>
+        <p class="timeline-text">Explored diagnostic analytics by examining medical imaging and genetic datasets. Synthesised research findings into a structured analytical report, demonstrating cross-domain data interpretation skills applicable to regulated environments.</p>
+      </div>
+      <div class="timeline-empty"></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="projects" id="projects">
+  <div class="projects-header">
+    <p class="section-eyebrow">Featured Work</p>
+    <h2 class="section-title">Key Projects</h2>
+  </div>
+  <div class="projects-grid">
+    <div class="project-card">
+      <div class="project-icon">📊</div>
+      <div class="project-tag">Power BI · Excel</div>
+      <h3>E-Commerce Revenue Analysis</h3>
+      <p class="project-desc">Uncovered 15–20% revenue growth opportunity through targeted product promotions. Built interactive dashboards for conversion funnels and seasonal demand tracking.</p>
+    </div>
+    <div class="project-card">
+      <div class="project-icon">🛒</div>
+      <div class="project-tag">Power BI</div>
+      <h3>Retail Sales Dashboard</h3>
+      <p class="project-desc">Automated reporting replacing manual workflows. Achieved 40% efficiency improvement tracking sales, profit margins, and category ROI across retail operations.</p>
+    </div>
+    <div class="project-card">
+      <div class="project-icon">✈️</div>
+      <div class="project-tag">Excel</div>
+      <h3>AeroMax Airways Analytics</h3>
+      <p class="project-desc">Operational efficiency analysis for an airline dataset. Identified delay patterns and booking revenue gaps to support scheduling and revenue recovery decisions.</p>
+    </div>
+    <div class="project-card">
+      <div class="project-icon">🏪</div>
+      <div class="project-tag">Excel · Power BI</div>
+      <h3>StellarMart Retail Analysis</h3>
+      <p class="project-desc">Identified margin gaps and underperforming categories. Cleaned multi-source datasets to improve reporting accuracy for stakeholder decision-making.</p>
+    </div>
+    <div class="project-card">
+      <div class="project-icon">🧬</div>
+      <div class="project-tag">Excel · Research</div>
+      <h3>Health Data Research</h3>
+      <p class="project-desc">Diagnostic analytics on medical imaging and genetic datasets using Healthcare & Precision Medicine principles. Produced structured analytical report for regulated environments.</p>
+    </div>
+    <div class="project-card">
+      <div class="project-icon">🤖</div>
+      <div class="project-tag">AI Governance · NIST RMF</div>
+      <h3>AI Governance & Risk</h3>
+      <p class="project-desc">NIST RMF certified with expertise in AI Ethics, AI Security & Governance, and AI and Human Rights. Focused on responsible AI deployment for international markets.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section class="certs" id="certifications">
+  <div class="certs-header">
+    <p class="section-eyebrow">Credentials</p>
+    <h2 class="section-title">Certifications</h2>
+  </div>
+  <div class="certs-grid">
+    <div class="cert-card">
+      <h3>📈 Data & Analytics</h3>
+      <ul class="cert-list">
+        <li>Master Data Analytics in Excel</li>
+        <li>SQL for Data Science</li>
+        <li>Data Visualisation in Power BI</li>
+        <li>Data Visualisation in Tableau</li>
+        <li>Presenting Data</li>
+        <li>Data Analytics with Excel</li>
+      </ul>
+    </div>
+    <div class="cert-card">
+      <h3>🤖 AI, Ethics & Governance</h3>
+      <ul class="cert-list">
+        <li>NIST Risk Management Framework</li>
+        <li>AI Ethics</li>
+        <li>AI Security & Governance</li>
+        <li>AI and Human Rights</li>
+        <li>AI for Business</li>
+        <li>AI Data Management</li>
+        <li>Social & Ethical Awareness</li>
+      </ul>
+    </div>
+    <div class="cert-card">
+      <h3>💼 Professional</h3>
+      <ul class="cert-list">
+        <li>Project Management</li>
+        <li>Cybersecurity Awareness</li>
+        <li>Healthcare Data Science</li>
+        <li>Professional Development (HP Life)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-left">
+    <p class="section-eyebrow" style="color:var(--orange-light)">Let's Connect</p>
+    <h2 class="section-title">Get In Touch</h2>
+    <p class="section-body">Open to roles in UAE, Europe, and Remote. Whether you're looking for a data analyst, AI governance specialist, or someone who can bridge both — let's talk.</p>
+    <div class="contact-items">
+      <a href="/cdn-cgi/l/email-protection#b8cbcaddddd2d1dad1d6cd8981818df8dfd5d9d1d496dbd7d5" class="contact-item">
+        <div class="contact-icon">✉️</div>
+        <div>
+          <div class="contact-item-label">Email</div>
+          <div class="contact-item-value"><span class="__cf_email__" data-cfemail="35464750505f5c575c5b40040c0c00755258545c591b565a58">[email&#160;protected]</span></div>
+        </div>
+      </a>
+      <a href="https://linkedin.com/in/sreejibinu" target="_blank" class="contact-item">
+        <div class="contact-icon">🔗</div>
+        <div>
+          <div class="contact-item-label">LinkedIn</div>
+          <div class="contact-item-value">linkedin.com/in/sreejibinu</div>
+        </div>
+      </a>
+      <div class="contact-item">
+        <div class="contact-icon">📍</div>
+        <div>
+          <div class="contact-item-label">Location</div>
+          <div class="contact-item-value">Based in Muscat · Indian National · Remote Worldwide</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="contact-right">
+    <h3>Currently Available For</h3>
+    <p>I'm actively seeking opportunities in data analytics and AI governance — open to full-time roles, contract work, and remote engagements globally.</p>
+    <div class="avail-badges">
+      <span class="avail-badge">UAE Roles</span>
+      <span class="avail-badge">Europe</span>
+      <span class="avail-badge">Remote</span>
+      <span class="avail-badge">Data Analyst</span>
+      <s
