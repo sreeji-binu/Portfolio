@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sreeji Binu — Data Analyst & AI Governance Specialist</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --teal: #1a5c52;
+  --teal-dark: #0f3d36;
+  --teal-light: #2a7a6e;
+  --orange: #e07b39;
+  --orange-light: #f0a060;
+  --blue: #3d6e8a;
+  --cream: #f5f1ea;
+  --cream2: #ede8df;
+  --white: #fdfcfa;
+  --dark: #111c1a;
+  --mid: #3a524e;
+  --light: #7a9490;
+  --fs-xs: 0.72rem;
+  --fs-sm: 0.85rem;
+  --fs-base: 1rem;
+  --fs-lg: 1.15rem;
+  --fs-xl: 1.4rem;
+  --fs-2xl: 1.8rem;
+  --fs-3xl: clamp(2.2rem, 6vw, 3.5rem);
+  --fs-hero: clamp(2.8rem, 10vw, 5.5rem);
+  --radius: 12px;
+  --shadow: 0 4px 24px rgba(15,61,54,0.10);
+  --shadow-lg: 0 12px 48px rgba(15,61,54,0.16);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{font-family:'Outfit',sans-serif;background:var(--white);color:var(--dark);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:var(--cream);}
+::-webkit-scrollbar-thumb{background:var(--teal);border-radius:4px;}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:999;display:flex;align-items:center;justify-content:space-between;padding:1rem 1.5rem;background:rgba(253,252,250,0.95);backdrop-filter:blur(16px);border-bottom:1px solid rgba(26,92,82,0.08);transition:box-shadow 0.3s;}
+.nav.scrolled{box-shadow:var(--shadow);}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700;color:var(--teal);text-decoration:none;letter-spacing:0.02em;}
+.nav-logo span{color:var(--orange);}
+.nav-menu{display:flex;gap:0.3rem;list-style:none;}
+.nav-menu a{display:block;padding:0.45rem 0.9rem;font-size:var(--fs-xs);font-weight:500;color:var(--mid);text-decoration:none;border-radius:999px;letter-spacing:0.06em;text-transform:uppercase;transition:background 0.2s,color 0.2s;}
+.nav-menu a:hover{background:var(--cream);color:var(--teal);}
+.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none;}
+.nav-burger span{display:block;width:24px;height:2px;background:var(--teal);border-radius:2px;transition:transform 0.3s,opacity 0.3s;}
+.mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--teal-dark);z-index:998;flex-direction:column;align-items:center;justify-content:center;gap:2rem;}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{font-family:'Cormorant Garamond',serif;font-size:2rem;color:#fff;text-decoration:none;font-weight:600;transition:color 0.2s;}
+.mobile-menu a:hover{color:var(--orange-light);}
+.mobile-close{position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;color:#fff;font-size:1.8rem;cursor:pointer;}
+
+/* HERO */
+.hero{min-height:100svh;background:var(--teal-dark);display:flex;flex-direction:column;justify-content:flex-end;padding:7rem 1.5rem 3rem;position:relative;overflow:hidden;}
+.hero-bg-circle{position:absolute;border-radius:50%;pointer-events:none;}
+.hero-bg-circle.c1{width:500px;height:500px;background:radial-gradient(circle,rgba(224,123,57,0.18),transparent 70%);top:-150px;right:-100px;}
+.hero-bg-circle.c2{width:400px;height:400px;background:radial-gradient(circle,rgba(42,122,110,0.3),transparent 70%);bottom:-100px;left:-80px;}
+.hero-bg-circle.c3{width:200px;height:200px;background:radial-gradient(circle,rgba(61,110,138,0.25),transparent 70%);top:40%;left:40%;}
+.hero-content{position:relative;z-index:2;max-width:700px;}
+.hero-tag{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(224,123,57,0.2);border:1px solid rgba(224,123,57,0.4);color:var(--orange-light);font-size:var(--fs-xs);font-weight:600;letter-spacing:0.12em;text-transform:uppercase;padding:0.4rem 1rem;border-radius:999px;margin-bottom:1.5rem;}
+.hero-tag::before{content:'';width:6px;height:6px;background:var(--orange);border-radius:50%;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(1.4);}}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:var(--fs-hero);font-weight:700;color:#fff;line-height:1.0;margin-bottom:1.2rem;letter-spacing:-0.01em;}
+.hero h1 em{font-style:normal;color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,0.5);}
+.hero-desc{font-size:var(--fs-base);color:rgba(255,255,255,0.65);line-height:1.75;font-weight:300;max-width:520px;margin-bottom:2rem;}
+.hero-pills{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:2.5rem;}
+.pill{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.8);font-size:var(--fs-xs);padding:0.35rem 0.85rem;border-radius:999px;font-weight:400;letter-spacing:0.03em;}
+.hero-actions{display:flex;gap:0.75rem;flex-wrap:wrap;}
+.btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.85rem 1.8rem;font-size:var(--fs-sm);font-weight:600;border-radius:var(--radius);text-decoration:none;border:none;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s,background 0.2s;letter-spacing:0.03em;white-space:nowrap;}
+.btn:active{transform:scale(0.97);}
+.btn-primary{background:var(--orange);color:#fff;}
+.btn-primary:hover{background:var(--orange-light);box-shadow:0 8px 24px rgba(224,123,57,0.35);transform:translateY(-2px);}
+.btn-ghost{background:rgba(255,255,255,0.1);color:#fff;border:1px solid rgba(255,255,255,0.2);}
+.btn-ghost:hover{background:rgba(255,255,255,0.18);transform:translateY(-2px);}
+.hero-scroll{position:absolute;bottom:2rem;right:1.5rem;display:flex;flex-direction:column;align-items:center;gap:0.4rem;color:rgba(255,255,255,0.35);font-size:var(--fs-xs);letter-spacing:0.1em;text-transform:uppercase;z-index:2;}
+.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,rgba(255,255,255,0.4),transparent);animation:scrollAnim 2s ease infinite;}
+@keyframes scrollAnim{0%{transform:scaleY(0);transform-origin:top;}50%{transform:scaleY(1);transform-origin:top;}51%{transform:scaleY(1);transform-origin:bottom;}100%{transform:scaleY(0);transform-origin:bottom;}}
+
+/* SECTION BASE */
+section{padding:5rem 1.5rem;}
+.container{max-width:960px;margin:0 auto;}
+.section-label{display:inline-flex;align-items:center;gap:0.5rem;font-size:var(--fs-xs);font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--orange);margin-bottom:0.75rem;}
+.section-label::before{content:'';width:20px;height:1.5px;background:var(--orange);border-radius:2px;}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:var(--fs-3xl);font-weight:700;line-height:1.1;letter-spacing:-0.01em;}
+.divider{width:40px;height:3px;background:var(--orange);border-radius:2px;margin:1.2rem 0;}
+
+/* ABOUT */
+.about{background:var(--cream);}
+.about-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:3.5rem;align-items:center;}
+.about-visual{display:flex;flex-direction:column;gap:1rem;}
+.about-card{background:var(--white);border-radius:var(--radius);padding:1.5rem;box-shadow:var(--shadow);border-left:3px solid var(--teal);}
+.about-card.accent{border-left-color:var(--orange);}
+.about-card.blue{border-left-color:var(--blue);}
+.about-card-label{font-size:var(--fs-xs);color:var(--light);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.4rem;font-weight:500;}
+.about-card-value{font-family:'Cormorant Garamond',serif;font-size:var(--fs-2xl);font-weight:700;color:var(--teal);}
+.about-card.accent .about-card-value{color:var(--orange);}
+.about-card.blue .about-card-value{color:var(--blue);font-size:var(--fs-lg);line-height:1.4;}
+.about .section-title{color:var(--teal);}
+.about-text{font-size:var(--fs-base);color:var(--mid);line-height:1.8;font-weight:300;margin-bottom:1rem;}
+.tool-row{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1.5rem;}
+.tool{background:var(--teal);color:#fff;font-size:var(--fs-xs);padding:0.35rem 0.8rem;border-radius:4px;font-weight:500;}
+
+/* EDUCATION */
+.education{background:var(--teal-dark);}
+.education .section-title{color:#fff;}
+.education .section-label{color:var(--orange-light);}
+.education .section-label::before{background:var(--orange-light);}
+.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2.5rem;}
+.edu-card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:var(--radius);padding:2rem;transition:background 0.2s,transform 0.2s;}
+.edu-card:hover{background:rgba(255,255,255,0.1);transform:translateY(-3px);}
+.edu-card-icon{width:44px;height:44px;background:var(--orange);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:1.2rem;}
+.edu-card h3{font-family:'Cormorant Garamond',serif;font-size:var(--fs-xl);color:#fff;margin-bottom:0.3rem;}
+.edu-card p{font-size:var(--fs-sm);color:rgba(255,255,255,0.55);}
+.skills-section{margin-top:3rem;}
+.skills-section h3{font-size:var(--fs-sm);font-weight:600;color:var(--orange-light);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:1rem;}
+.skills-wrap{display:flex;flex-wrap:wrap;gap:0.5rem;}
+.skill-tag{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.85);font-size:var(--fs-xs);padding:0.4rem 0.85rem;border-radius:4px;font-weight:400;}
+
+/* EXPERIENCE */
+.experience{background:var(--white);}
+.experience .section-title{color:var(--teal);}
+.exp-list{margin-top:2.5rem;display:flex;flex-direction:column;gap:1.2rem;}
+.exp-item{background:var(--cream);border-radius:var(--radius);padding:1.8rem;border-left:4px solid var(--teal);transition:transform 0.2s,box-shadow 0.2s;}
+.exp-item:hover{transform:translateX(4px);box-shadow:var(--shadow);}
+.exp-item:nth-child(2){border-left-color:var(--orange);}
+.exp-item:nth-child(3){border-left-color:var(--blue);}
+.exp-item:nth-child(4){border-left-color:var(--teal-light);}
+.exp-item:nth-child(5){border-left-color:var(--orange-light);}
+.exp-header{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap;margin-bottom:0.6rem;}
+.exp-title{font-family:'Cormorant Garamond',serif;font-size:var(--fs-xl);font-weight:700;color:var(--teal);}
+.exp-date{font-size:var(--fs-xs);font-weight:600;color:var(--orange);background:rgba(224,123,57,0.1);padding:0.25rem 0.7rem;border-radius:999px;white-space:nowrap;}
+.exp-tools{font-size:var(--fs-xs);color:var(--blue);font-weight:600;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.8rem;}
+.exp-text{font-size:var(--fs-sm);color:var(--mid);line-height:1.75;}
+.exp-highlight{display:inline-flex;align-items:center;gap:0.4rem;background:rgba(26,92,82,0.08);color:var(--teal);font-size:var(--fs-xs);font-weight:600;padding:0.3rem 0.7rem;border-radius:4px;margin-top:0.8rem;}
+
+/* PROJECTS */
+.projects{background:var(--cream);}
+.projects .section-title{color:var(--teal);}
+.projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem;margin-top:2.5rem;}
+.project-card{background:var(--white);border-radius:var(--radius);padding:1.8rem;box-shadow:var(--shadow);transition:transform 0.2s,box-shadow 0.2s;display:flex;flex-direction:column;gap:0.8rem;position:relative;overflow:hidden;}
+.project-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--teal);}
+.project-card:nth-child(2)::before{background:var(--orange);}
+.project-card:nth-child(3)::before{background:var(--blue);}
+.project-card:nth-child(4)::before{background:var(--teal-light);}
+.project-card:nth-child(5)::before{background:var(--orange-light);}
+.project-card:nth-child(6)::before{background:var(--blue);}
+.project-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);}
+.project-emoji{font-size:1.8rem;}
+.project-tag{font-size:var(--fs-xs);font-weight:600;color:var(--orange);text-transform:uppercase;letter-spacing:0.08em;}
+.project-name{font-family:'Cormorant Garamond',serif;font-size:var(--fs-xl);font-weight:700;color:var(--teal);line-height:1.2;}
+.project-desc{font-size:var(--fs-sm);color:var(--mid);line-height:1.7;}
+
+/* CERTIFICATIONS */
+.certifications{background:var(--white);}
+.certifications .section-title{color:var(--teal);}
+.certs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem;}
+.cert-card{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:transform 0.2s;}
+.cert-card:hover{transform:translateY(-4px);}
+.cert-header{padding:1.5rem;display:flex;align-items:center;gap:0.8rem;}
+.cert-card:nth-child(1) .cert-header{background:var(--teal);}
+.cert-card:nth-child(2) .cert-header{background:var(--orange);}
+.cert-card:nth-child(3) .cert-header{background:var(--blue);}
+.cert-icon{font-size:1.5rem;}
+.cert-title{font-family:'Cormorant Garamond',serif;font-size:var(--fs-lg);font-weight:700;color:#fff;}
+.cert-body{background:var(--cream);padding:1.5rem;}
+.cert-list{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+.cert-list li{display:flex;align-items:flex-start;gap:0.6rem;font-size:var(--fs-sm);color:var(--mid);line-height:1.4;}
+.cert-list li::before{content:'✓';color:var(--orange);font-weight:700;flex-shrink:0;margin-top:0.05rem;}
+
+/* CONTACT */
+.contact{background:var(--teal-dark);}
+.contact .section-title{color:#fff;}
+.contact .section-label{color:var(--orange-light);}
+.contact .section-label::before{background:var(--orange-light);}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:2.5rem;align-items:start;}
+.contact-desc{font-size:var(--fs-base);color:rgba(255,255,255,0.65);line-height:1.8;font-weight:300;margin-bottom:2rem;}
+.contact-links{display:flex;flex-direction:column;gap:1rem;}
+.contact-link{display:flex;align-items:center;gap:1rem;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:var(--radius);padding:1rem 1.3rem;text-decoration:none;color:#fff;transition:background 0.2s,transform 0.2s;}
+.contact-link:hover{background:rgba(255,255,255,0.12);transform:translateX(4px);}
+.contact-link-icon{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.contact-link-icon.email{background:var(--orange);}
+.contact-link-icon.linkedin{background:var(--blue);}
+.contact-link-icon.location{background:var(--teal-light);}
+.contact-link-label{font-size:var(--fs-xs);color:rgba(255,255,255,0.45);text-transform:uppercase;letter-spacing:0.08em;}
+.contact-link-value{font-size:var(--fs-sm);font-weight:500;color:#fff;word-break:break-all;}
+.contact-right{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:var(--radius);padding:2.5rem;}
+.contact-right h3{font-family:'Cormorant Garamond',serif;font-size:var(--fs-2xl);color:#fff;margin-bottom:1rem;}
+.contact-right p{font-size:var(--fs-sm);color:rgba(255,255,255,0.6);line-height:1.7;margin-bottom:1.8rem;}
+.avail-grid{display:flex;flex-wrap:wrap;gap:0.6rem;}
+.avail-tag{background:rgba(224,123,57,0.2);border:1px solid rgba(224,123,57,0.35);color:var(--orange-light);font-size:var(--fs-xs);padding:0.4rem 0.9rem;border-radius:999px;font-weight:500;}
+
+/* FOOTER */
+footer{background:var(--dark);text-align:center;padding:1.8rem 1.5rem;font-size:var(--fs-xs);color:rgba(255,255,255,0.3);letter-spacing:0.05em;}
+footer span{color:var(--orange);}
+
+/* ANIMATIONS */
+.fade-up{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease;}
+.fade-up.visible{opacity:1;transform:translateY(0);}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  section{padding:4rem 1.2rem;}
+  .nav-menu{display:none;}
+  .nav-burger{display:flex;}
+  .hero{padding:6rem 1.2rem 3rem;}
+  .hero h1{font-size:clamp(2.5rem,12vw,4rem);}
+  .about-grid{grid-template-columns:1fr;gap:2rem;}
+  .about-visual{flex-direction:row;flex-wrap:wrap;}
+  .about-card{flex:1;min-width:130px;}
+  .edu-grid{grid-template-columns:1fr;gap:1rem;}
+  .projects-grid{grid-template-columns:1fr;}
+  .certs-grid{grid-template-columns:1fr;}
+  .contact-grid{grid-template-columns:1fr;gap:2rem;}
+  .exp-header{flex-direction:column;gap:0.4rem;}
+}
+@media(max-width:480px){
+  .btn{padding:0.8rem 1.4rem;font-size:var(--fs-xs);}
+  .hero-actions{gap:0.5rem;}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="navbar">
+  <a href="#" class="nav-logo">Sreeji <span>Binu</span></a>
+  <ul class="nav-menu">
+    <li><a href="#about">About</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#certifications">Certs</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-burger" id="burger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="menuClose">✕</button>
+  <a href="#about" class="menu-link">About</a>
+  <a href="#education" class="menu-link">Education</a>
+  <a href="#experience" class="menu-link">Experience</a>
+  <a href="#projects" class="menu-link">Projects</a>
+  <a href="#certifications" class="menu-link">Certifications</a>
+  <a href="#contact" class="menu-link">Contact</a>
+</div>
+
+<section class="hero">
+  <div class="hero-bg-circle c1"></div>
+  <div class="hero-bg-circle c2"></div>
+  <div class="hero-bg-circle c3"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Available for New Opportunities</div>
+    <h1>Sreeji<br/><em>Binu</em></h1>
+    <p class="hero-desc">Data Analyst & AI Governance Specialist transforming complex datasets into ROI-focused insights. NIST RMF certified. Open to UAE, Europe & Remote.</p>
+    <div class="hero-pills">
+      <span class="pill">Power BI</span>
+      <span class="pill">Tableau</span>
+      <span class="pill">SQL</span>
+      <span class="pill">Excel</span>
+      <span class="pill">NIST RMF</span>
+      <span class="pill">AI Governance</span>
+    </div>
+    <div class="hero-actions">
+      <a href="#projects" class="btn btn-primary">View My Work</a>
+      <a href="#contact" class="btn btn-ghost">Get In Touch</a>
+    </div>
+  </div>
+  <div class="hero-scroll"><div class="scroll-line"></div>scroll</div>
+</section>
+
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual fade-up">
+        <div class="about-card">
+          <div class="about-card-label">Projects Completed</div>
+          <div class="about-card-value">5+</div>
+        </div>
+        <div class="about-card accent">
+          <div class="about-card-label">Certifications</div>
+          <div class="about-card-value">15+</div>
+        </div>
+        <div class="about-card blue">
+          <div class="about-card-label">Location</div>
+          <div class="about-card-value">Based in Muscat · Indian National · Remote Worldwide</div>
+        </div>
+      </div>
+      <div class="fade-up">
+        <div class="section-label">About Me</div>
+        <h2 class="section-title" style="color:var(--teal)">Data-Driven.<br/>Governance-Ready.</h2>
+        <div class="divider"></div>
+        <p class="about-text">Results-driven Data Analyst with an M.Com foundation and certified expertise in SQL, Power BI, Tableau, and AI Governance. Proven ability to transform complex datasets into ROI-focused insights across e-commerce, retail, and aviation domains.</p>
+        <p class="about-text">NIST RMF certified with a career focus on AI Auditing and data-driven decision-making for international markets. I thrive on independent delivery, clear stakeholder communication, and meticulous attention to detail.</p>
+        <div class="tool-row">
+          <span class="tool">Power BI</span><span class="tool">Tableau</span><span class="tool">Excel</span><span class="tool">SQL</span><span class="tool">DAX</span><span class="tool">Power Query</span><span class="tool">AI Governance</span><span class="tool">NIST RMF</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="education" id="education">
+  <div class="container">
+    <div class="fade-up">
+      <div class="section-label">Background</div>
+      <h2 class="section-title">Education & Skills</h2>
+    </div>
+    <div class="edu-grid fade-up">
+      <div class="edu-card">
+        <div class="edu-card-icon">🎓</div>
+        <h3>Master of Commerce</h3>
+        <p>M.Com — Bharathiar University, India</p>
+      </div>
+      <div class="edu-card">
+        <div class="edu-card-icon">📚</div>
+        <h3>Bachelor of Commerce</h3>
+        <p>B.Com — Kerala University, India</p>
+      </div>
+    </div>
+    <div class="skills-section fade-up">
+      <h3>Technical & Soft Skills</h3>
+      <div class="skills-wrap">
+        <span class="skill-tag">Power BI</span><span class="skill-tag">Tableau</span><span class="skill-tag">Excel</span><span class="skill-tag">Power Query</span><span class="skill-tag">SQL</span><span class="skill-tag">DAX</span><span class="skill-tag">KPI Dashboards</span><span class="skill-tag">Data Cleaning</span><span class="skill-tag">Statistical Analysis</span><span class="skill-tag">Data Visualisation</span><span class="skill-tag">AI Governance</span><span class="skill-tag">NIST RMF</span><span class="skill-tag">Analytical Thinking</span><span class="skill-tag">Stakeholder Communication</span><span class="skill-tag">Independent Delivery</span><span class="skill-tag">Attention to Detail</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="experience" id="experience">
+  <div class="container">
+    <div class="fade-up">
+      <div class="section-label">Work Experience</div>
+      <h2 class="section-title">Projects & Analytics Work</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="exp-list">
+      <div class="exp-item fade-up">
+        <div class="exp-header">
+          <div class="exp-title">E-Commerce Analytics — Revenue Growth</div>
+          <div class="exp-date">Mar 2026</div>
+        </div>
+        <div class="exp-tools">Excel · Power BI</div>
+        <p class="exp-text">Analysed sales data, conversion rates, and customer segments to identify a 15–20% revenue growth opportunity. Built an interactive Power BI dashboard tracking conversion funnels, cart abandonment, and seasonal demand — enabling data-backed pricing and inventory decisions.</p>
+        <span class="exp-highlight">📈 15–20% Revenue Growth Opportunity Identified</span>
+      </div>
+      <div class="exp-item fade-up">
+        <div class="exp-header">
+          <div class="exp-title">Retail Sales Dashboard</div>
+          <div class="exp-date">2024</div>
+        </div>
+        <div class="exp-tools">Power BI</div>
+        <p class="exp-text">Improved reporting efficiency by 40% by replacing manual spreadsheet workflows with automated Power BI dashboards tracking sales, profit margins, and category ROI. Identified top-performing product lines and seasonal demand cycles.</p>
+        <span class="exp-highlight">⚡ 40% Reporting Efficiency Improvement</span>
+      </div>
+      <div class="exp-item fade-up">
+        <div class="exp-header">
+          <div class="exp-title">StellarMart Retail Analysis</div>
+          <div class="exp-date">2024</div>
+        </div>
+        <div class="exp-tools">Excel · Power BI</div>
+        <p class="exp-text">Analysed retail sales data to identify margin gaps and underperforming categories. Cleaned and restructured multi-source datasets, reducing data inconsistencies and improving reporting accuracy for downstream stakeholder analysis.</p>
+      </div>
+      <div class="exp-item fade-up">
+        <div class="exp-header">
+          <div class="exp-title">AeroMax Airways — Operational Analytics</div>
+          <div class="exp-date">2024</div>
+        </div>
+        <div class="exp-tools">Excel</div>
+        <p class="exp-text">Identified operational inefficiencies in airline datasets — including delay patterns and booking revenue gaps — delivering data-driven recommendations to improve scheduling efficiency and revenue recovery.</p>
+      </div>
+      <div class="exp-item fade-up">
+        <div class="exp-header">
+          <div class="exp-title">Health Data Research — Diagnostic Analytics</div>
+          <div class="exp-date">2025–2026</div>
+        </div>
+        <div class="exp-tools">Excel · Research Analysis</div>
+        <p class="exp-text">Explored diagnostic analytics by examining medical imaging and genetic datasets. Synthesised research findings into a structured analytical report, demonstrating cross-domain data interpretation skills for regulated environments.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="projects" id="projects">
+  <div class="container">
+    <div class="fade-up">
+      <div class="section-label">Featured Work</div>
+      <h2 class="section-title">Key Projects</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="projects-grid">
+      <div class="project-card fade-up">
+        <div class="project-emoji">📊</div>
+        <div class="project-tag">Power BI · Excel</div>
+        <div class="project-name">E-Commerce Revenue Analysis</div>
+        <p class="project-desc">Uncovered 15–20% revenue growth opportunity. Built interactive dashboards for conversion funnels, cart abandonment, and seasonal demand tracking.</p>
+      </div>
+      <div class="project-card fade-up">
+        <div class="project-emoji">🛒</div>
+        <div class="project-tag">Power BI</div>
+        <div class="project-name">Retail Sales Dashboard</div>
+        <p class="project-desc">Automated reporting replacing manual workflows — 40% efficiency gain. Tracked sales, profit margins, and category ROI across retail operations.</p>
+      </div>
+      <div class="project-card fade-up">
+        <div class="project-emoji">✈️</div>
+        <div class="project-tag">Excel</div>
+        <div class="project-name">AeroMax Airways Analytics</div>
+        <p class="project-desc">Operational analysis identifying delay patterns and booking revenue gaps to support scheduling and revenue recovery for an airline dataset.</p>
+      </div>
+      <div class="project-card fade-up">
+        <div class="project-emoji">🏪</div>
+        <div class="project-tag">Excel · Power BI</div>
+        <div class="project-name">StellarMart Retail Analysis</div>
+        <p class="project-desc">Identified margin gaps and underperforming categories. Cleaned multi-source datasets to improve reporting accuracy for stakeholder decisions.</p>
+      </div>
+      <div class="project-card fade-up">
+        <div class="project-emoji">🧬</div>
+        <div class="project-tag">Excel · Research</div>
+        <div class="project-name">Health Data Research</div>
+        <p class="project-desc">Diagnostic analytics on medical imaging and genetic datasets. Structured analytical report for regulated and data-sensitive environments.</p>
+      </div>
+      <div class="project-card fade-up">
+        <div class="project-emoji">🤖</div>
+        <div class="project-tag">AI Governance · NIST RMF</div>
+        <div class="project-name">AI Governance & Risk</div>
+        <p class="project-desc">NIST RMF certified expertise in AI Ethics, AI Security & Governance, and AI and Human Rights for responsible AI deployment globally.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="certifications" id="certifications">
+  <div class="container">
+    <div class="fade-up">
+      <div class="section-label">Credentials</div>
+      <h2 class="section-title">Certifications</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="certs-grid">
+      <div class="cert-card fade-up">
+        <div class="cert-header"><div class="cert-icon">📈</div><div class="cert-title">Data & Analytics</div></div>
+        <div class="cert-body">
+          <ul class="cert-list">
+            <li>Master Data Analytics in Excel</li>
+            <li>SQL for Data Science</li>
+            <li>Data Visualisation in Power BI</li>
+            <li>Data Visualisation in Tableau</li>
+            <li>Presenting Data</li>
+            <li>Data Analytics with Excel</li>
+          </ul>
+        </div>
+      </div>
+      <div class="cert-card fade-up">
+        <div class="cert-header"><div class="cert-icon">🤖</div><div class="cert-title">AI, Ethics & Governance</div></div>
+        <div class="cert-body">
+          <ul class="cert-list">
+            <li>NIST Risk Management Framework</li>
+            <li>AI Ethics</li>
+            <li>AI Security & Governance</li>
+            <li>AI and Human Rights</li>
+            <li>AI for Business</li>
+            <li>AI Data Management</li>
+            <li>Social & Ethical Awareness</li>
+          </ul>
+        </div>
+      </div>
+      <div class="cert-card fade-up">
+        <div class="cert-header"><div class="cert-icon">💼</div><div class="cert-title">Professional</div></div>
+        <div class="cert-body">
+          <ul class="cert-list">
+            <li>Project Management</li>
+            <li>Cybersecurity Awareness</li>
+            <li>Healthcare Data Science</li>
+            <li>Professional Development (HP Life)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="fade-up">
+      <div class="section-label">Let's Connect</div>
+      <h2 class="section-title">Get In Touch</h2>
+    </div>
+    <div class="contact-grid">
+      <div class="fade-up">
+        <p class="contact-desc">Open to roles in UAE, Europe, and Remote. Whether you're looking for a data analyst, AI governance specialist, or someone who can bridge both — let's talk.</p>
+        <div class="contact-links">
+          <a href="mailto:sreejibinu1995@gmail.com" class="contact-link">
+            <div class="contact-link-icon email">✉️</div>
+            <div>
+              <div class="contact-link-label">Email</div>
+              <div class="contact-link-value">sreejibinu1995@gmail.com</div>
+            </div>
+          </a>
+          <a href="https://www.linkedin.com/in/sreeji-binu-44067a3a8" target="_blank" class="contact-link">
+            <div class="contact-link-icon linkedin">🔗</div>
+            <div>
+              <div class="contact-link-label">LinkedIn</div>
+              <div class="contact-link-value">linkedin.com/in/sreeji-binu</div>
+            </div>
+          </a>
+          <div class="contact-link">
+            <div class="contact-link-icon location">📍</div>
+            <div>
+              <div class="contact-link-label">Location</div>
+              <div class="contact-link-value">Based in Muscat · Indian National · Remote Worldwide</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-right fade-up">
+        <h3>Currently Available For</h3>
+        <p>Actively seeking opportunities in data analytics and AI governance. Open to full-time roles, contract work, and remote engagements globally.</p>
+        <div class="avail-grid">
+          <span class="avail-tag">UAE Roles</span>
+          <span class="avail-tag">Europe</span>
+          <span class="avail-tag">Remote</span>
+          <span class="avail-tag">Data Analyst</span>
+          <span class="avail-tag">AI Governance</span>
+          <span class="avail-tag">Freelance</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 <span>Sreeji Binu</span> · Data Analyst & AI Governance Specialist · Based in Muscat</p>
+</footer>
+
+<script>
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 20); });
+
+  const burger = document.getElementById('burger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const menuClose = document.getElementById('menuClose');
+  burger.addEventListener('click', () => mobileMenu.classList.add('open'));
+  menuClose.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  document.querySelectorAll('.menu-link').forEach(link => {
+    link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
